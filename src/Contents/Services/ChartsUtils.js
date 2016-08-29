@@ -122,6 +122,8 @@ ChartsUtils = {
             })
         };
 
+        console.log(results["data"]);
+        
         cb(results);
     },
 
