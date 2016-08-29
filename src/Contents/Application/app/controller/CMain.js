@@ -118,7 +118,7 @@ App.controller.define('CMain', {
                 title: 'Voie ' + index,
                 listeners: {
                     single: true,
-                    tabchange: function (tab, e0pts) {
+                    click: function (tab, e0pts) {
                         console.log("listener");
                         _p.plot(tab.id, index);
                     }
