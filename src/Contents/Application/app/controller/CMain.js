@@ -118,7 +118,7 @@ App.controller.define('CMain', {
                 title: 'Voie ' + index,
                 listeners: {
                     single: true,
-                    render: function (tab, e, e0pts) {
+                    activate: function (tab, e, e0pts) {
                         console.log("listener");
                         _p.plot(tab.id, index);
                     }
