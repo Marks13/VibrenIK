@@ -100,34 +100,7 @@ App.controller.define('CMain', {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-
-            // Création d'un onglet qui sera réservé au diagramme circulaire.
-            panel.add(new Ext.Panel({
-                id: 'DC',
-                title: 'DC',
-                disabled: true
-            }));
-
-            for (tabIndex = 0; tabIndex < records.length; tabIndex++) {
-                tab = new Ext.Panel({
-                    id: records[tabIndex].id,
-                    title: 'Voie ' + tabIndex,
-                    html: '<div id=chart' + records[tabIndex].id + '></div>'
-                });
-
-                tab.addListener("activate",
-                    // fonction associée au listener
-                    function (tab, e0pts) {
-                        _p.plot(tab.id, tabIndex);
-                    },
-                    // options
-                    {
-                        single: true
-                    }
-                );
-
-                panel.add(tab);
-            }
+            _p.addTabToPanel(panel, 0, records);
 
             panel.setActiveTab(1);
             panel.show();
@@ -159,7 +132,7 @@ App.controller.define('CMain', {
             };
 
             // Remplissage dans la div dont l'id est la concaténation
-            // de chart et de l'id de la mesure.
+            // de 'chart' et de l'id de la mesure.
             Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
             mask.hide();
         });
@@ -176,8 +149,9 @@ App.controller.define('CMain', {
                 id: records[index].id,
                 title: 'Voie ' + index,
                 listeners: {
-                    beforerender: function (tab, e0pts) {
-                        _p.plot(tab.id);
+                    single: true,
+                    activate: function (tab, e0pts) {
+                        _p.plot(tab.id, index);
                     }
                 },
                 html: '<div id=chart' + records[index].id + '></div>'
