@@ -122,152 +122,153 @@ App.controller.define('CMain', {
             panel.show();
 
         });
-
-        // Fonction qui appelle la bibliothèque externe plotly.js
-        plot: function (mesureId, tabIndex) {
-                var mask = new Ext.LoadMask(Ext.getBody(), {
-                    msg: "Chargement en cours."
-                });
-                mask.show();
-
-                App.ChartsUtils.getChartPointsFFT2(mesureId, function (fftPoints) {
-
-                    // Paramétrage de l'esthétique du graphe
-                    var layout = {
-                        title: 'Capteur de la voie ' + tabIndex,
-                        xaxis: {
-                            title: 'Hz',
-                            rangeslider: {}
-                        },
-                        yaxis: {
-                            title: 'amplitude',
-                            // Permet d'adapter la fenêtre de visualisation au graphe entier.
-                            fixedrange: true
-                        }
-                    };
-
-                    // Remplissage dans la div dont l'id est la concaténation
-                    // de chart et de l'id de la mesure.
-                    Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
-                    mask.hide();
-                });
-            },
-
-
     },
 
-    addTabToPanel: function (panel, index, records) {
-        var context = this;
+    // Fonction qui appelle la bibliothèque externe plotly.js
+    plot: function (mesureId, tabIndex) {
+        var mask = new Ext.LoadMask(Ext.getBody(), {
+            msg: "Chargement en cours."
+        });
+        mask.show();
 
-        // Prédicat indiquant la fin de la récursivité.
-        if (index < records.length) {
-            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
-            // sélectionné.
-            tab = new Ext.Panel({
-                id: records[index].id,
-                title: 'Voie ' + index,
-                listeners: {
-                    beforerender: function (tab, e0pts) {
-                        _p.plot(tab.id);
-                    }
+        App.ChartsUtils.getChartPointsFFT2(mesureId, function (fftPoints) {
+
+            // Paramétrage de l'esthétique du graphe
+            var layout = {
+                title: 'Capteur de la voie ' + tabIndex,
+                xaxis: {
+                    title: 'Hz',
+                    rangeslider: {}
                 },
-                html: '<div id=chart' + records[index].id + '></div>'
-            });
-            panel.add(tab);
-            context.addTabToPanel(panel, index + 1, records);
-        } else {
-            panel.setActiveTab(1);
-            panel.show();
-        }
-    },
-
-    // Fonction appellée lors de l'ajout d'une étude
-    doNewProject: function (me) {
-        var o = {
-            libelle: App.get('TNewProject textfield#text_title').getValue(),
-            description: App.get('TNewProject textfield#text_description').getValue()
-        };
-        _p = this;
-
-        App.Etudes.nouveau(o, function (result) {
-            App.ID = result.insertId;
-            App.get('mainform panel#mainScreen').show();
-            App.get('mainform textarea#description').setValue(App.get('TNewProject textfield#text_description').getValue());
-            App.get('mainform textfield#etude').setValue(App.get('TNewProject textfield#text_title').getValue());
-
-            _p.refreshStoreAndTabs(_p, App.ID);
-            me.up('window').close();
-        });
-    },
-
-    // Import d'un fichier de façon récursive
-    doJobs: function (JOBS, id, cb) {
-        var _p = this;
-        JOBS[id]["etudeCourante"] = App.ID;
-        App.Files.import(JOBS[id], function (error, msg) {
-            if (!error) {
-                if (JOBS[id + 1]) {
-                    _p.doJobs(JOBS, id + 1, function (result) {
-                        cb(result + "Import de " + JOBS[id].filename + " réussi. --- ");
-                    });
-                } else cb("Import de " + JOBS[id].filename + " réussi. --- ");
-            } else {
-                cb(msg.result);
-            }
-        });
-    },
-
-    // Fonction appellée lors de l'import
-    doImport: function () {
-        var JOBS = App.get('TImport uploadfilemanager#up').getFiles();
-        _p = this;
-        var myJOBS = [];
-        for (var i = 0; i < JOBS.length; i++) {
-            if (JOBS[i].filename.indexOf('.ACQ') > -1) myJOBS.push(JOBS[i]);
-        };
-        for (var i = 0; i < JOBS.length; i++) {
-            if (JOBS[i].filename.indexOf('.SIG') > -1) myJOBS.push(JOBS[i]);
-        };
-
-        this.doJobs(myJOBS, 0, function (msg) {
-            App.notify(msg);
-            _p.refreshStoreAndTabs(_p, App.ID);
-            App.get("TImport").close();
-        });
-    },
-
-    // Création d'une étude.
-    new_project: function () {
-        App.view.create('VNew', {
-            modal: true
-        }).show();
-    },
-
-    // Ouverture d'une étude.
-    open_project: function () {
-        App.view.create('VOpen', {
-            modal: true
-        }).show();
-    },
-
-    Menu_onClick: function (p) {
-        if (p.itemId) {
-            switch (p.itemId) {
-                case "MNU_NEW":
-                    this.new_project();
-                    break;
-                case "MNU_OPEN":
-                    this.open_project();
-                    break;
-                default:
-                    return;
+                yaxis: {
+                    title: 'amplitude',
+                    // Permet d'adapter la fenêtre de visualisation au graphe entier.
+                    fixedrange: true
+                }
             };
-        };
+
+            // Remplissage dans la div dont l'id est la concaténation
+            // de chart et de l'id de la mesure.
+            Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
+            mask.hide();
+        });
     },
 
-    onLoad: function () {
 
+},
+
+addTabToPanel: function (panel, index, records) {
+    var context = this;
+
+    // Prédicat indiquant la fin de la récursivité.
+    if (index < records.length) {
+        // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
+        // sélectionné.
+        tab = new Ext.Panel({
+            id: records[index].id,
+            title: 'Voie ' + index,
+            listeners: {
+                beforerender: function (tab, e0pts) {
+                    _p.plot(tab.id);
+                }
+            },
+            html: '<div id=chart' + records[index].id + '></div>'
+        });
+        panel.add(tab);
+        context.addTabToPanel(panel, index + 1, records);
+    } else {
+        panel.setActiveTab(1);
+        panel.show();
     }
+},
+
+// Fonction appellée lors de l'ajout d'une étude
+doNewProject: function (me) {
+    var o = {
+        libelle: App.get('TNewProject textfield#text_title').getValue(),
+        description: App.get('TNewProject textfield#text_description').getValue()
+    };
+    _p = this;
+
+    App.Etudes.nouveau(o, function (result) {
+        App.ID = result.insertId;
+        App.get('mainform panel#mainScreen').show();
+        App.get('mainform textarea#description').setValue(App.get('TNewProject textfield#text_description').getValue());
+        App.get('mainform textfield#etude').setValue(App.get('TNewProject textfield#text_title').getValue());
+
+        _p.refreshStoreAndTabs(_p, App.ID);
+        me.up('window').close();
+    });
+},
+
+// Import d'un fichier de façon récursive
+doJobs: function (JOBS, id, cb) {
+    var _p = this;
+    JOBS[id]["etudeCourante"] = App.ID;
+    App.Files.import(JOBS[id], function (error, msg) {
+        if (!error) {
+            if (JOBS[id + 1]) {
+                _p.doJobs(JOBS, id + 1, function (result) {
+                    cb(result + "Import de " + JOBS[id].filename + " réussi. --- ");
+                });
+            } else cb("Import de " + JOBS[id].filename + " réussi. --- ");
+        } else {
+            cb(msg.result);
+        }
+    });
+},
+
+// Fonction appellée lors de l'import
+doImport: function () {
+    var JOBS = App.get('TImport uploadfilemanager#up').getFiles();
+    _p = this;
+    var myJOBS = [];
+    for (var i = 0; i < JOBS.length; i++) {
+        if (JOBS[i].filename.indexOf('.ACQ') > -1) myJOBS.push(JOBS[i]);
+    };
+    for (var i = 0; i < JOBS.length; i++) {
+        if (JOBS[i].filename.indexOf('.SIG') > -1) myJOBS.push(JOBS[i]);
+    };
+
+    this.doJobs(myJOBS, 0, function (msg) {
+        App.notify(msg);
+        _p.refreshStoreAndTabs(_p, App.ID);
+        App.get("TImport").close();
+    });
+},
+
+// Création d'une étude.
+new_project: function () {
+    App.view.create('VNew', {
+        modal: true
+    }).show();
+},
+
+// Ouverture d'une étude.
+open_project: function () {
+    App.view.create('VOpen', {
+        modal: true
+    }).show();
+},
+
+Menu_onClick: function (p) {
+    if (p.itemId) {
+        switch (p.itemId) {
+            case "MNU_NEW":
+                this.new_project();
+                break;
+            case "MNU_OPEN":
+                this.open_project();
+                break;
+            default:
+                return;
+        };
+    };
+},
+
+onLoad: function () {
+
+}
 
 
 });
