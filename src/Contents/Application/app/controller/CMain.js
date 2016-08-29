@@ -101,10 +101,6 @@ App.controller.define('CMain', {
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
             _p.addTabToPanel(panel, 0, records);
-
-            panel.setActiveTab(1);
-            panel.show();
-
         });
     },
 
