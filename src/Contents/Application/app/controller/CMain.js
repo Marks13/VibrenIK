@@ -89,7 +89,7 @@ App.controller.define('CMain', {
     },
 
     // Fonction qui appelle la bibliothèque externe plotly.js
-    plot: function (mesureId) {
+    plot: function (mesureId, tabIndex) {
         var mask = new Ext.LoadMask(Ext.getBody(), {
             msg: "Chargement en cours."
         });
@@ -99,7 +99,7 @@ App.controller.define('CMain', {
 
             // Paramétrage de l'esthétique du graphe
             var layout = {
-                title: 'Capteur de la mesure ' + mesureId,
+                title: 'Capteur de la voie ' + tabIndex,
                 xaxis: {
                     title: 'Hz',
                     rangeslider: {}
@@ -146,7 +146,7 @@ App.controller.define('CMain', {
                     title: 'Voie ' + tabIndex,
                     listeners: {
                         beforerender: function (tab, e0pts) {
-                            _p.plot(tab.id);
+                            _p.plot(tab.id, tabIndex);
                         }
                     },
                     html: '<div id=chart' + records[tabIndex].id + '></div>'
