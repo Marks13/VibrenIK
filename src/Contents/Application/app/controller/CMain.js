@@ -97,18 +97,7 @@ App.controller.define('CMain', {
 
         _p.cleanAllTab();
 
-        // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
-
-        App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-            // Création d'un onglet qui sera réservé au diagramme circulaire.
-            panel.add(new Ext.Panel({
-                id: 'DC',
-                title: 'DC',
-                disabled: true
-            }));
-            
-            _p.addTabToPanel(panel, 0, records);
-        });
+        App.ChartsUtil.doTabs(panel, selected.data.id);
     },
 
     // Fonction qui appelle la bibliothèque externe plotly.js
