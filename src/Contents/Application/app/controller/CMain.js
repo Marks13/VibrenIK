@@ -39,7 +39,7 @@ App.controller.define('CMain', {
     // Appelle cleanTab sur tous les onglets.
     cleanAllTab: function () {
         var tabPanel = App.get('mainform tabpanel#chartTab');
-        tabPanel.removeAll();
+
     },
 
     // Fonction utilisée lors de l'ajout/ouverture d'étude pour rafraîchir le store d'acquisition
