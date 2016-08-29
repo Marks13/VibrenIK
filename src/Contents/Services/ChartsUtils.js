@@ -58,7 +58,7 @@ ChartsUtils = {
                 listeners: {
                     single: true,
                     activate: function (tab, e0pts) {
-                        panel.plot(tab.id, index);
+                        App.ChartsUtils.plot(tab.id, index);
                     }
                 },
                 html: '<div id=chart' + records[index].id + '></div>'
