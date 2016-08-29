@@ -122,7 +122,7 @@ App.controller.define('CMain', {
 
             tab.addListener('activate',
 
-                function (this, e0pts) {
+                function (tab, e0pts) {
                     console.log("listener");
                     _p.plot(tab.id, index);
                 }, {
