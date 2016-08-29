@@ -95,7 +95,11 @@ App.controller.define('CMain', {
                 title: 'DC',
                 disabled: true
             }));
+
+            panel.setActiveTab(1);
+
             _p.addTabToPanel(panel, 0, records);
+            panel.show();
         });
     },
 
@@ -149,9 +153,6 @@ App.controller.define('CMain', {
             });
             panel.add(tab);
             context.addTabToPanel(panel, index + 1, records);
-        } else {
-            panel.setActiveTab(1);
-            panel.show();
         }
     },
 
