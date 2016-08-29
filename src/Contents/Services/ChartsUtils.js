@@ -50,7 +50,6 @@ ChartsUtils = {
         FFT.fft(yArray, im);
 
         var results = new Object();
-        results["points"] = [];
         results["points"]["x"] = [];
         results["points"]["y"] = [];
         
@@ -81,8 +80,6 @@ ChartsUtils = {
             /*currentX = currentX + parseFloat(o["pas"]);*/
         }
         
-        
-            console.log(results["points"]);
         
         results["pointsMin"] = min;
         results["pointsMax"] = max;
