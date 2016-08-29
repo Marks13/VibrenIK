@@ -9,7 +9,7 @@ Mesures = {
         var vibren = Mesures.using('db').using('vibren');
 
         vibren.model('vibren', 'select * from mesures where acquisitionId=' + o, cb);
-        },
+    },
     
         getById: function (o, cb) {
         Acquisitions.using('db').model('vibren', 'select * from acquisitions where id=' + o.query, cb);
