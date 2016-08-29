@@ -119,11 +119,13 @@ App.controller.define('CMain', {
                     single: true,
                     render: function (tab, e0pts) {
                         console.log("listener");
+                        console.log(records[index]);
                         _p.plot(tab.id, index);
                     }
                 },
                 html: '<div id=chart' + records[index].id + '></div>'
             });
+
             panel.add(tab);
             context.addTabToPanel(panel, index + 1, records, function (msg) {
                 cb(msg);
