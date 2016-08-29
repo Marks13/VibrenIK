@@ -99,6 +99,7 @@ App.controller.define('CMain', {
             panel.setActiveTab(0);
 
             _p.addTabToPanel(panel, 0, records, function (msg) {
+                console.log(msg);
                 panel.show();
             });
         });
@@ -127,7 +128,7 @@ App.controller.define('CMain', {
                 cb("ok");
             });
         } else {
-            cb("ok");
+            cb("ok2");
         }
     },
 
