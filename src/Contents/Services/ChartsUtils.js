@@ -1,4 +1,22 @@
 ChartsUtils = {
+    
+        getChartPointsFFT2: function (o, cb) {
+        
+        App.Mesures.getById(o, function (mesure) {
+
+            // On récupère le signal contenant la mesure.
+            App.Signals.getSingle(mesure.acquisitionId, function (signal) {
+                var args = new Object();
+                args["points"] = mesure.points;
+                args["freqEchantillonage"] = signal.frequence_echantillonage;
+                App.ChartsUtils.getChartPointsFFT(args, function (fftPoints) {
+                    cb(fftPoints);
+                });
+
+            });
+        });
+    },
+    
     getChartPointsFFT: function (o, cb) {
         // Split sur les points en base.
         var splittedPoints = o["points"].split(";");
