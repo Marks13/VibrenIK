@@ -95,26 +95,26 @@ App.controller.define('CMain', {
         });
         mask.show();
 
-        App.ChartsUtils.getChartPointsFFT2(mesureId, function(fftPoints){
-           
-                    // Paramétrage de l'esthétique du graphe
-                    var layout = {
-                        title: 'Capteur de la voie ' + mesure.voie,
-                        xaxis: {
-                            title: 'Hz',
-                            rangeslider: {}
-                        },
-                        yaxis: {
-                            title: 'amplitude',
-                            // Permet d'adapter la fenêtre de visualisation au graphe entier.
-                            fixedrange: true
-                        }
-                    };
-                    
-                    // Remplissage dans la div dont l'id est la concaténation
-                    // de chart et de l'id de la mesure.
-                    Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
-                    mask.hide(); 
+        App.ChartsUtils.getChartPointsFFT2(mesureId, function (fftPoints) {
+
+            // Paramétrage de l'esthétique du graphe
+            var layout = {
+                title: 'Capteur de la mesure ' + mesureId
+                xaxis: {
+                    title: 'Hz',
+                    rangeslider: {}
+                },
+                yaxis: {
+                    title: 'amplitude',
+                    // Permet d'adapter la fenêtre de visualisation au graphe entier.
+                    fixedrange: true
+                }
+            };
+
+            // Remplissage dans la div dont l'id est la concaténation
+            // de chart et de l'id de la mesure.
+            Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
+            mask.hide();
         });
 
 
@@ -236,7 +236,7 @@ App.controller.define('CMain', {
         for (var i = 0; i < JOBS.length; i++) {
             if (JOBS[i].filename.indexOf('.SIG') > -1) myJOBS.push(JOBS[i]);
         };
-        
+
         this.doJobs(myJOBS, 0, function (msg) {
             App.notify(msg);
             _p.refreshStoreAndTabs(_p, App.ID);
