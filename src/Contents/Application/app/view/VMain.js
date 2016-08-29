@@ -88,6 +88,11 @@ App.view.define('VMain', {
                         height: "100%",
                         xtype: 'tabpanel',
                         itemId: 'chartTab',
+                        listeners: {
+                            beforeclose: function () {
+                                this.removeAll();
+                            }
+                        }
                         defaults: {
                             autoScroll: true,
                             bodyPadding: 10
