@@ -76,6 +76,8 @@ ChartsUtils = {
                 min = currentPoint;
             }
             
+            console.log(results["points"]);
+            
             results["points"]["x"].push(frequence);
             results["points"]["y"].push(currentPoint);
             /*currentX = currentX + parseFloat(o["pas"]);*/
