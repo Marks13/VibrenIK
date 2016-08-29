@@ -114,16 +114,6 @@ ChartsUtils = {
         cb(results);
     },
 
-    getCheerio: function (o, cb) {
-        try {
-            ChartsUtils.using("cheerio");
-            var doc = cheerio.load('<div id=divChart"/>');
-            cb(doc.html());
-        } catch (e) {
-            console.log(e);
-        }
-    },
-
     getRotatedPoints: function (o, cb) {
         targetPoints = o["points"];
         angle = parseInt(o["angle"]) * (Math.PI / 180);

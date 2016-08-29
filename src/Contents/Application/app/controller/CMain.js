@@ -104,7 +104,7 @@ App.controller.define('CMain', {
                 args["points"] = mesure.points;
                 args["freqEchantillonage"] = signal.frequence_echantillonage;
                 App.ChartsUtils.getChartPointsFFT(args, function (fftPoints) {
-
+                    
                     // Construction du format attendu par plotly.js
                     var data = {
                         x: fftPoints["points"].map(function (current) {
