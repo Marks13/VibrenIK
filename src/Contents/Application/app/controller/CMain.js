@@ -112,7 +112,6 @@ App.controller.define('CMain', {
                 tab = new Ext.Panel({
                     id: records[tabIndex].id,
                     title: 'Voie ' + tabIndex,
-
                     html: '<div id=chart' + records[tabIndex].id + '></div>'
                 });
                 panel.add(tab);
