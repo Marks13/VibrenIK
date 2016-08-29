@@ -78,8 +78,8 @@ ChartsUtils = {
                 min = currentPoint;
             }
             
-            results["points"]["x"].push(frequence);
-            results["points"]["y"].push(currentPoint);
+            x.push(frequence);
+            y.push(currentPoint);
             /*currentX = currentX + parseFloat(o["pas"]);*/
         }
         
