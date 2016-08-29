@@ -89,7 +89,7 @@ App.view.define('VMain', {
                         xtype: 'tabpanel',
                         itemId: 'chartTab',
                         listeners: {
-                            render: function () {
+                            hide: function () {
                                 this.removeAll();
                             }
                         },
