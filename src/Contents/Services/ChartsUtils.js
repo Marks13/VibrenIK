@@ -1,4 +1,5 @@
 ChartsUtils = {
+    
     doTabs: function (panel, selected) {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
