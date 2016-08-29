@@ -39,6 +39,7 @@ App.controller.define('CMain', {
     // Appelle cleanTab sur tous les onglets.
     cleanAllTab: function () {
         var tabPanel = App.get('mainform tabpanel#chartTab');
+        tabPanel.removeAll();
     },
 
     // Fonction utilisée lors de l'ajout/ouverture d'étude pour rafraîchir le store d'acquisition
@@ -96,20 +97,17 @@ App.controller.define('CMain', {
 
         _p.cleanAllTab();
 
-        App.ChartsUtils.doTabs(panel, selected.data.id);
-        
-//        // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
-//
-//        App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-//            // Création d'un onglet qui sera réservé au diagramme circulaire.
-//            panel.add(new Ext.Panel({
-//                id: 'DC',
-//                title: 'DC',
-//                disabled: true
-//            }));
-//            
-//            _p.addTabToPanel(panel, 0, records);
-//        });
+        // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
+
+        App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
+            // Création d'un onglet qui sera réservé au diagramme circulaire.
+            panel.add(new Ext.Panel({
+                id: 'DC',
+                title: 'DC',
+                disabled: true
+            }));
+            _p.addTabToPanel(panel, 0, records);
+        });
     },
 
     // Fonction qui appelle la bibliothèque externe plotly.js
