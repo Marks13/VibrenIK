@@ -103,19 +103,23 @@ App.controller.define('CMain', {
 
         panel.setActiveTab(0);
 
-        for (index = 0; index < records.length; index++) {
+        var ids = [];
+        for(recordsIndex = 0; recordsIndex < records.length; recordsIndex++) {
+            ids.push(records[index].id);
+        }
+        
+        for (index = 0; index < ids.length; index++) {            
             tab = new Ext.Panel({
-                id: records[index].id,
+                id: ids[index],
                 title: 'Voie ' + index,
                 listeners: {
                     single: true,
                     render: function (tab, e0pts) {
                         console.log("listener");
-                        console.log(records[index]);
                         _p.plot(tab.id, index);
                     }
                 },
-                html: '<div id=chart' + records[index].id + '></div>'
+                html: '<div id=chart' + ids[index] + '></div>'
             });
 
             panel.add(tab);
