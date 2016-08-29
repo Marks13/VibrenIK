@@ -90,7 +90,11 @@ App.controller.define('CMain', {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-            
+            panel.add(new Ext.Panel({
+                id: 'DC',
+                title: 'DC',
+                disabled: true
+            }));
             _p.addTabToPanel(panel, 0, records);
         });
     },
