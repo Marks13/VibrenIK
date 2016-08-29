@@ -115,7 +115,7 @@ App.controller.define('CMain', {
                     html: '<div id=chart' + records[tabIndex].id + '></div>'
                 });
 
-                panel.addListener("activate",
+                tab.addListener("activate",
                     // fonction associée au listener
                     function (tab, e0pts) {
                         _p.plot(tab.id, tab.items);
