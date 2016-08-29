@@ -83,6 +83,10 @@ ChartsUtils = {
             /*currentX = currentX + parseFloat(o["pas"]);*/
         }
         
+        results["points"] = {
+            x: x,
+            y: y
+        }
         
         results["pointsMin"] = min;
         results["pointsMax"] = max;
