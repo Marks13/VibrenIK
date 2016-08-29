@@ -53,8 +53,8 @@ ChartsUtils = {
         
         results["points"] = [];
         
-        results["points"]["x"] = [];
-        results["points"]["y"] = [];
+        var x = [];
+        var y = [];
         
         var currentX = 0;
         // recherche des bornes de ml fft
