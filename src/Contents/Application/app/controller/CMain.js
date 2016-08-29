@@ -120,6 +120,10 @@ App.controller.define('CMain', {
             panel.setActiveTab(1);
             panel.show();
 
+        }).then(function (){
+            for(tabIndex = 0. tabIndex < records.length; tabIndex++) {
+                console.log(panel);
+            }
         });
     },
 
