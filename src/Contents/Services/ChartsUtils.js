@@ -79,7 +79,9 @@ ChartsUtils = {
             results["points"]["y"].push(currentPoint);
             /*currentX = currentX + parseFloat(o["pas"]);*/
         }
-
+        
+        console.log(results["points"]["x"]);
+        
         results["pointsMin"] = min;
         results["pointsMax"] = max;
         results["spectrum"] = [];
