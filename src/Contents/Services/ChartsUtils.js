@@ -51,7 +51,9 @@ ChartsUtils = {
 
         var results = new Object();
         results["points"] = [];
-
+        results["points"]["x"] = [];
+        results["points"]["y"] = [];
+        
         var currentX = 0;
         // recherche des bornes de ml fft
         var max = parseFloat(Number.MIN_VALUE);
@@ -73,10 +75,8 @@ ChartsUtils = {
             if (currentPoint < min) {
                 min = currentPoint;
             }
-            results["points"].push({
-                x: frequence,
-                y: currentPoint
-            });
+            results["points"]["x"].push(frequence);
+            results["points"]["y"].push(currentPoint);
             /*currentX = currentX + parseFloat(o["pas"]);*/
         }
 
