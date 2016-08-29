@@ -54,6 +54,8 @@ App.controller.define('CMain', {
                 return false;
             });
             acquisitionStore.reload();
+            
+            
             App.get('mainform panel#mainScreen').show();
         });
     },
@@ -85,8 +87,10 @@ App.controller.define('CMain', {
 
         var _p = this;
 
+        console.log("hide1");
         panel.hide();
 
+        console.log("hide2");
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
