@@ -146,9 +146,10 @@ App.controller.define('CMain', {
                 tab = new Ext.Panel({
                     id: records[tabIndex].id,
                     title: 'Voie ' + tabIndex,
+                    items: tabIndex,
                     listeners: {
                         beforerender: function (tab, e0pts) {
-                            _p.plot(tab.id, tabIndex);
+                            _p.plot(tab.id, tab.items);
                         }
                     },
                     html: '<div id=chart' + records[tabIndex].id + '></div>'
