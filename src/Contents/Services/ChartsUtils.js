@@ -1,5 +1,4 @@
 ChartsUtils = {
-
     doTabs: function (panel, selected) {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
@@ -15,7 +14,7 @@ ChartsUtils = {
         });
     },
 
-     // Fonction qui appelle la bibliothèque externe plotly.js
+    // Fonction qui appelle la bibliothèque externe plotly.js
     plot: function (mesureId, tabIndex) {
         var mask = new Ext.LoadMask(Ext.getBody(), {
             msg: "Chargement en cours."
@@ -70,7 +69,7 @@ ChartsUtils = {
             panel.show();
         }
     },
-    
+
     getChartPointsFFT2: function (o, cb) {
 
         App.Mesures.getById(o, function (mesure) {
