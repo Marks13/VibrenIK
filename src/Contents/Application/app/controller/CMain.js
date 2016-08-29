@@ -211,7 +211,7 @@ App.controller.define('CMain', {
     },
 
     addTabToPanel: function (panel, index, records) {
-        var context = this;²
+        var context = this;
 
         // Prédicat indiquant la fin de la récursivité.
         if (index < records.length) {
