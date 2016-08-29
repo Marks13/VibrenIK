@@ -92,7 +92,7 @@ App.view.define('VMain', {
                             beforeclose: function () {
                                 this.removeAll();
                             }
-                        }
+                        },
                         defaults: {
                             autoScroll: true,
                             bodyPadding: 10
