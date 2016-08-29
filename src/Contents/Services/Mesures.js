@@ -13,7 +13,7 @@ Mesures = {
                 acquisitionId: o
             }
         }).then(function (records) {
-            cb(records);
+            callback(records);
         });
     },
     
