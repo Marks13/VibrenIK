@@ -121,7 +121,7 @@ App.controller.define('CMain', {
             panel.show();
 
         }).then(function (){
-            for(tabIndex = 0. tabIndex < records.length; tabIndex++) {
+            for(tabIndex = 0; tabIndex < records.length; tabIndex++) {
                 console.log(panel);
             }
         });
