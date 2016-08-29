@@ -91,7 +91,7 @@ App.view.define('VMain', {
                         listeners: {
                             hide: function () {
                                 console.log("LISTENER");
-                                this.clearListeners();
+                                this.clearManagedListeners();
                                 console.log("LISTENER2");
                                 this.removeAll();
                                 console.log("LISTENER3");
