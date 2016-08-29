@@ -8,7 +8,12 @@ App.controller.define('CMain', {
 
     // Fonction d'attachement des événements aux boutons.
     init: function () {
-
+        var tabPanel = App.get('mainform tabpanel#chartTab');
+        
+        tabPanel.on('beforeclose', function() {
+           this.removeAll(); 
+        });
+        
         this.control({
             "menu>menuitem": {
                 click: "Menu_onClick"
@@ -36,12 +41,6 @@ App.controller.define('CMain', {
 
     },
 
-    // Appelle cleanTab sur tous les onglets.
-    cleanAllTab: function () {
-        var tabPanel = App.get('mainform tabpanel#chartTab');
-
-    },
-
     // Fonction utilisée lors de l'ajout/ouverture d'étude pour rafraîchir le store d'acquisition
     // et les onglets.
     refreshStoreAndTabs(context, etudeId) {
@@ -62,7 +61,6 @@ App.controller.define('CMain', {
             });
             acquisitionStore.reload();
             App.get('mainform panel#mainScreen').show();
-            context.cleanAllTab();
         });
     },
 
