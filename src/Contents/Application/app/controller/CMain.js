@@ -109,6 +109,7 @@ App.controller.define('CMain', {
         var context = this;
 
         // Prédicat indiquant la fin de la récursivité.
+        console.log(records.length);
         if (index < records.length) {
             // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
             // sélectionné.
