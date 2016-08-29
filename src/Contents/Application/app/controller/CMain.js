@@ -127,7 +127,7 @@ App.controller.define('CMain', {
         panel.show();
 
     },
-
+    
     addTabToPanel: function (panel, index, records, cb) {
         var context = this;
 
