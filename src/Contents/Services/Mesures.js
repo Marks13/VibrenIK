@@ -8,7 +8,13 @@ Mesures = {
     getByAcquisitionId: function (o, cb) {
         var vibren = Mesures.using('db').using('vibren');
 
-        vibren.model('vibren', 'select * from mesures where acquisitionId=' + o, cb);
+        vibren.mesures.findAll({
+            where: {
+                acquisitionId: o
+            }
+        }).then(function (records) {
+            cb(records);
+        });
     },
     
     getById: function (o, cb) {
@@ -19,7 +25,7 @@ Mesures = {
                 id: o
             }
         }).then(function (records) {
-            return records;
+            cb(records);
         });
     }
 }
