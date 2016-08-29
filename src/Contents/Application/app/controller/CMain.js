@@ -105,10 +105,10 @@ App.controller.define('CMain', {
 
         var ids = [];
         for(recordsIndex = 0; recordsIndex < records.length; recordsIndex++) {
-            ids.push(records[index].id);
+            ids.push(records[recordsIndex].id);
         }
         
-        for (index = 0; index < ids.length; index++) {            
+        for (var index = 0; index < ids.length; index++) {            
             tab = new Ext.Panel({
                 id: ids[index],
                 title: 'Voie ' + index,
