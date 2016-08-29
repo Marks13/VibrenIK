@@ -1,7 +1,78 @@
 ChartsUtils = {
+
+    doTabs: function (panel, selected) {
+        // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
+
+        App.Mesures.getByAcquisitionId(selected, function (records) {
+            // Création d'un onglet qui sera réservé au diagramme circulaire.
+            panel.add(new Ext.Panel({
+                id: 'DC',
+                title: 'DC',
+                disabled: true
+            }));
+
+            App.ChartsUtils.addTabToPanel(panel, 0, records);
+        });
+    },
+
+     // Fonction qui appelle la bibliothèque externe plotly.js
+    plot: function (mesureId, tabIndex) {
+        var mask = new Ext.LoadMask(Ext.getBody(), {
+            msg: "Chargement en cours."
+        });
+        mask.show();
+
+        App.ChartsUtils.getChartPointsFFT2(mesureId, function (fftPoints) {
+
+            // Paramétrage de l'esthétique du graphe
+            var layout = {
+                title: 'Capteur de la voie ' + tabIndex,
+                xaxis: {
+                    title: 'Hz',
+                    rangeslider: {}
+                },
+                yaxis: {
+                    title: 'amplitude',
+                    // Permet d'adapter la fenêtre de visualisation au graphe entier.
+                    fixedrange: true
+                }
+            };
+
+            // Remplissage dans la div dont l'id est la concaténation
+            // de 'chart' et de l'id de la mesure.
+            Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
+            mask.hide();
+        });
+    },
+
+    addTabToPanel: function (panel, index, records) {
+        var context = this;
+
+        // Prédicat indiquant la fin de la récursivité.
+        if (index < records.length) {
+            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
+            // sélectionné.
+            tab = new Ext.Panel({
+                id: records[index].id,
+                title: 'Voie ' + index,
+                listeners: {
+                    single: true,
+                    activate: function (tab, e0pts) {
+                        panel.plot(tab.id, index);
+                    }
+                },
+                html: '<div id=chart' + records[index].id + '></div>'
+            });
+            panel.add(tab);
+            context.addTabToPanel(panel, index + 1, records);
+        } else {
+            panel.setActiveTab(1);
+            panel.show();
+        }
+    },
     
-        getChartPointsFFT2: function (o, cb) {
-        
+    getChartPointsFFT2: function (o, cb) {
+
         App.Mesures.getById(o, function (mesure) {
 
             // On récupère le signal contenant la mesure.
@@ -16,7 +87,7 @@ ChartsUtils = {
             });
         });
     },
-    
+
     getChartPointsFFT: function (o, cb) {
         // Split sur les points en base.
         var splittedPoints = o["points"].split(";");
@@ -68,12 +139,12 @@ ChartsUtils = {
         FFT.fft(yArray, im);
 
         var results = new Object();
-        
+
         results["points"] = new Object();
-        
+
         var x = [];
         var y = [];
-        
+
         var currentX = 0;
         // recherche des bornes de ml fft
         var max = parseFloat(Number.MIN_VALUE);
@@ -95,15 +166,15 @@ ChartsUtils = {
             if (currentPoint < min) {
                 min = currentPoint;
             }
-            
+
             x.push(frequence);
             y.push(currentPoint);
             /*currentX = currentX + parseFloat(o["pas"]);*/
         }
-        
+
         results["points"]["x"] = x;
         results["points"]["y"] = y;
-        
+
         results["pointsMin"] = min;
         results["pointsMax"] = max;
         results["spectrum"] = [];
@@ -134,7 +205,7 @@ ChartsUtils = {
 
         results["spectrumMin"] = spectrumMin;
         results["spectrumMax"] = spectrumMax;
-        
+
         cb(results);
     },
 
