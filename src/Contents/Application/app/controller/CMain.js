@@ -54,8 +54,8 @@ App.controller.define('CMain', {
                 return false;
             });
             acquisitionStore.reload();
-            
-            
+
+
             App.get('mainform panel#mainScreen').show();
         });
     },
@@ -108,30 +108,34 @@ App.controller.define('CMain', {
         panel.setActiveTab(0);
 
         var ids = [];
-        for(recordsIndex = 0; recordsIndex < records.length; recordsIndex++) {
+        for (recordsIndex = 0; recordsIndex < records.length; recordsIndex++) {
             ids.push(records[recordsIndex].id);
         }
-        
-        for (var index = 0; index < ids.length; index++) {            
+
+        for (var index = 0; index < ids.length; index++) {
             tab = new Ext.Panel({
                 id: ids[index],
                 title: 'Voie ' + index,
-                listeners: {
-                    single: true,
-                    activate: function (tab, e, e0pts) {
-                        console.log("listener");
-                        _p.plot(tab.id, index);
-                    }
-                },
+               
                 html: '<div id=chart' + ids[index] + '></div>'
             });
+
+            tab.addListener('activate',
+
+                function (this, e0pts) {
+                    console.log("listener");
+                    _p.plot(tab.id, index);
+                }, {
+                    single: true
+                }
+            );
 
             panel.add(tab);
         }
         panel.show();
 
     },
-    
+
     addTabToPanel: function (panel, index, records, cb) {
         var context = this;
 
