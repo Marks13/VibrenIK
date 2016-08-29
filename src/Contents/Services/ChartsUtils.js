@@ -111,6 +111,16 @@ ChartsUtils = {
         results["spectrumMin"] = spectrumMin;
         results["spectrumMax"] = spectrumMax;
 
+        // Construction du format attendu par plotly.js
+        var results["data"] = {
+            x: fftPoints["points"].map(function (current) {
+                return current["x"];
+            }),
+            y: fftPoints["points"].map(function (current) {
+                return current["y"];
+            })
+        };
+
         cb(results);
     },
 
