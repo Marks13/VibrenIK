@@ -83,8 +83,7 @@
         "bufferpack",
         "crypto",
         "ml-fft",
-        "frequencyjs",
-        "cheerio"
+        "frequencyjs"
     ],
     "icon": {
         "background": "#FFFFFF",

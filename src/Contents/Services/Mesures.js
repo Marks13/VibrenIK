@@ -17,7 +17,7 @@ Mesures = {
         });
     },
     
-    getById: function (o, cb) {
+    getById: function (o) {
         var vibren = Mesures.using('db').using('vibren');
 
         vibren.mesures.find({
@@ -25,7 +25,7 @@ Mesures = {
                 id: o
             }
         }).then(function (records) {
-            cb(records);
+            return records;
         });
     }
 }
