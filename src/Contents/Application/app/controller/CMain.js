@@ -95,6 +95,8 @@ App.controller.define('CMain', {
         });
         mask.show();
 
+        console.log(tabIndex);
+        
         App.ChartsUtils.getChartPointsFFT2(mesureId, function (fftPoints) {
 
             // Paramétrage de l'esthétique du graphe
