@@ -90,29 +90,20 @@ App.controller.define('CMain', {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-            panel.add(new Ext.Panel({
-                id: 'DC',
-                title: 'DC',
-                disabled: true
-            }));
-
-            panel.setActiveTab(0);
-
-            _p.addTabToPanel(panel, 0, records, function (msg) {
-                console.log(msg);
-                panel.show();
-            });
+            _p.callbackSuccess(records);
         });
     },
 
-    addTabToPanel: function (panel, index, records, cb) {
-        var context = this;
+    callbackSuccess: function (records) {
+        panel.add(new Ext.Panel({
+            id: 'DC',
+            title: 'DC',
+            disabled: true
+        }));
 
-        // Prédicat indiquant la fin de la récursivité.
-        console.log(records.length);
-        if (index < records.length) {
-            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
-            // sélectionné.
+        panel.setActiveTab(0);
+
+        for (index = 0; index < records.length; index++) {
             tab = new Ext.Panel({
                 id: records[index].id,
                 title: 'Voie ' + index,
@@ -128,6 +119,20 @@ App.controller.define('CMain', {
             });
 
             panel.add(tab);
+        }
+        panel.show();
+
+    },
+
+    addTabToPanel: function (panel, index, records, cb) {
+        var context = this;
+
+        // Prédicat indiquant la fin de la récursivité.
+
+        if (index < records.length) {
+            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
+            // sélectionné.
+
             context.addTabToPanel(panel, index + 1, records, function (msg) {
                 cb(msg);
             });
