@@ -90,11 +90,11 @@ App.controller.define('CMain', {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-            _p.callbackSuccess(records);
+            _p.callbackSuccess(records, panel);
         });
     },
 
-    callbackSuccess: function (records) {
+    callbackSuccess: function (records, panel) {
         panel.add(new Ext.Panel({
             id: 'DC',
             title: 'DC',
