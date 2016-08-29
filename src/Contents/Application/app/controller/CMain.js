@@ -98,8 +98,9 @@ App.controller.define('CMain', {
 
             panel.setActiveTab(1);
 
-            _p.addTabToPanel(panel, 0, records);
-            panel.show();
+            _p.addTabToPanel(panel, 0, records, function(){
+                            panel.show();
+            });
         });
     },
 
@@ -133,7 +134,7 @@ App.controller.define('CMain', {
         });
     },
 
-    addTabToPanel: function (panel, index, records) {
+    addTabToPanel: function (panel, index, records, cb) {
         var context = this;
 
         // Prédicat indiquant la fin de la récursivité.
@@ -152,7 +153,11 @@ App.controller.define('CMain', {
                 html: '<div id=chart' + records[index].id + '></div>'
             });
             panel.add(tab);
-            context.addTabToPanel(panel, index + 1, records);
+            context.addTabToPanel(panel, index + 1, function(msg){
+                cb("ok");
+            });
+        } else {
+            cb("ok");
         }
     },
 
