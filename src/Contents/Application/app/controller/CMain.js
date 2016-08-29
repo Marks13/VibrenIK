@@ -96,7 +96,7 @@ App.controller.define('CMain', {
                 disabled: true
             }));
 
-            panel.setActiveTab(1);
+            panel.setActiveTab(0);
 
             _p.addTabToPanel(panel, 0, records, function (msg) {
                 panel.show();
