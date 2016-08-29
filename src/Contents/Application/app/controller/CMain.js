@@ -99,7 +99,7 @@ App.controller.define('CMain', {
 
             // Paramétrage de l'esthétique du graphe
             var layout = {
-                title: 'Capteur de la mesure ' + mesureId
+                title: 'Capteur de la mesure ' + mesureId,
                 xaxis: {
                     title: 'Hz',
                     rangeslider: {}
