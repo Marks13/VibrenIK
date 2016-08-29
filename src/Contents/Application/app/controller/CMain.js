@@ -8,12 +8,6 @@ App.controller.define('CMain', {
 
     // Fonction d'attachement des événements aux boutons.
     init: function () {
-        var tabPanel = App.get('mainform tabpanel#chartTab');
-        
-        tabPanel.on('beforeclose', function() {
-           this.removeAll(); 
-        });
-        
         this.control({
             "menu>menuitem": {
                 click: "Menu_onClick"
