@@ -104,6 +104,33 @@ App.controller.define('CMain', {
         });
     },
 
+    addTabToPanel: function (panel, index, records, cb) {
+        var context = this;
+
+        // Prédicat indiquant la fin de la récursivité.
+        if (index < records.length) {
+            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
+            // sélectionné.
+            tab = new Ext.Panel({
+                id: records[index].id,
+                title: 'Voie ' + index,
+                listeners: {
+                    single: true,
+                    activate: function (tab, e0pts) {
+                        _p.plot(tab.id, index);
+                    }
+                },
+                html: '<div id=chart' + records[index].id + '></div>'
+            });
+            panel.add(tab);
+            context.addTabToPanel(panel, index + 1, records, function (msg) {
+                cb("ok");
+            });
+        } else {
+            cb("ok");
+        }
+    },
+
     // Fonction qui appelle la bibliothèque externe plotly.js
     plot: function (mesureId, tabIndex) {
         var mask = new Ext.LoadMask(Ext.getBody(), {
@@ -132,33 +159,6 @@ App.controller.define('CMain', {
             Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
             mask.hide();
         });
-    },
-
-    addTabToPanel: function (panel, index, records, cb) {
-        var context = this;
-
-        // Prédicat indiquant la fin de la récursivité.
-        if (index < records.length) {
-            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
-            // sélectionné.
-            tab = new Ext.Panel({
-                id: records[index].id,
-                title: 'Voie ' + index,
-                listeners: {
-                    single: true,
-                    activate: function (tab, e0pts) {
-                        _p.plot(tab.id, index);
-                    }
-                },
-                html: '<div id=chart' + records[index].id + '></div>'
-            });
-            panel.add(tab);
-            context.addTabToPanel(panel, index + 1, function (msg) {
-                cb("ok");
-            });
-        } else {
-            cb("ok");
-        }
     },
 
     // Fonction appellée lors de l'ajout d'une étude
