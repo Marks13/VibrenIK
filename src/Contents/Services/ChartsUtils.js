@@ -110,8 +110,7 @@ ChartsUtils = {
 
         results["spectrumMin"] = spectrumMin;
         results["spectrumMax"] = spectrumMax;
-
-        // Construction du format attendu par plotly.js
+        
         cb(results);
     },
 
