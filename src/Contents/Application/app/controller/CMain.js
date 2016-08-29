@@ -125,7 +125,7 @@ App.controller.define('CMain', {
             });
             panel.add(tab);
             context.addTabToPanel(panel, index + 1, records, function (msg) {
-                cb("ok");
+                cb(msg);
             });
         } else {
             cb("ok2");
