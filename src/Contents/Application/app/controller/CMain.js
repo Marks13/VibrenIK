@@ -97,7 +97,7 @@ App.controller.define('CMain', {
 
         _p.cleanAllTab();
 
-        App.ChartsUtil.doTabs(panel, selected.data.id);
+        App.ChartsUtils.doTabs(panel, selected.data.id);
         
 //        // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 //
