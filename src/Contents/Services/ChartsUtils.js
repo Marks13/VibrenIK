@@ -51,7 +51,7 @@ ChartsUtils = {
 
         var results = new Object();
         
-        results["points"] = [];
+        results["points"] = new Object();
         
         var x = [];
         var y = [];
