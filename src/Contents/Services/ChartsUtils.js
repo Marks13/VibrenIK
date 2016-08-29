@@ -75,12 +75,11 @@ ChartsUtils = {
             if (currentPoint < min) {
                 min = currentPoint;
             }
+            
             results["points"]["x"].push(frequence);
             results["points"]["y"].push(currentPoint);
             /*currentX = currentX + parseFloat(o["pas"]);*/
         }
-        
-        console.log(results["points"]["x"]);
         
         results["pointsMin"] = min;
         results["pointsMax"] = max;
