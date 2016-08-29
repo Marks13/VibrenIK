@@ -118,7 +118,7 @@ App.controller.define('CMain', {
                 tab.addListener("activate",
                     // fonction associée au listener
                     function (tab, e0pts) {
-                        _p.plot(tab.id, tab.items);
+                        _p.plot(tab.id, tabIndex);
                     },
                     // options
                     {
