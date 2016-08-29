@@ -151,59 +151,33 @@ App.controller.define('CMain', {
 
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
-        records = App.Mesures.getByAcquisitionId(selected.data.id);
+        App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
 
-        // Création d'un onglet qui sera réservé au diagramme circulaire.
-        panel.add(new Ext.Panel({
-            id: 'DC',
-            title: 'DC',
-            disabled: true
-        }));
+            // Création d'un onglet qui sera réservé au diagramme circulaire.
+            panel.add(new Ext.Panel({
+                id: 'DC',
+                title: 'DC',
+                disabled: true
+            }));
 
-        for (tabIndex = 0; tabIndex < records.length; tabIndex++) {
-            tab = new Ext.Panel({
-                id: records[tabIndex].id,
-                title: 'Voie ' + tabIndex,
-                listeners: {
-                    beforerender: function (tab, e0pts) {
-                        _p.plot(tab.id);
-                    }
-                },
-                html: '<div id=chart' + records[tabIndex].id + '></div>'
-            });
-            panel.add(tab);
-        }
+            for (tabIndex = 0; tabIndex < records.length; tabIndex++) {
+                tab = new Ext.Panel({
+                    id: records[tabIndex].id,
+                    title: 'Voie ' + tabIndex,
+                    listeners: {
+                        beforerender: function (tab, e0pts) {
+                            _p.plot(tab.id);
+                        }
+                    },
+                    html: '<div id=chart' + records[tabIndex].id + '></div>'
+                });
+                panel.add(tab);
+            }
 
-        panel.setActiveTab(1);
-        panel.show();
+            panel.setActiveTab(1);
+            panel.show();
 
-//        App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-//
-//            // Création d'un onglet qui sera réservé au diagramme circulaire.
-//            panel.add(new Ext.Panel({
-//                id: 'DC',
-//                title: 'DC',
-//                disabled: true
-//            }));
-//
-//            for (tabIndex = 0; tabIndex < records.length; tabIndex++) {
-//                tab = new Ext.Panel({
-//                    id: records[tabIndex].id,
-//                    title: 'Voie ' + tabIndex,
-//                    listeners: {
-//                        beforerender: function (tab, e0pts) {
-//                            _p.plot(tab.id);
-//                        }
-//                    },
-//                    html: '<div id=chart' + records[tabIndex].id + '></div>'
-//                });
-//                panel.add(tab);
-//            }
-//
-//            panel.setActiveTab(1);
-//            panel.show();
-//
-//        });
+        });
 
         //                _p.addTabToPanel(panel, 0, records);
 
@@ -282,7 +256,7 @@ App.controller.define('CMain', {
         for (var i = 0; i < JOBS.length; i++) {
             if (JOBS[i].filename.indexOf('.SIG') > -1) myJOBS.push(JOBS[i]);
         };
-
+        
         this.doJobs(myJOBS, 0, function (msg) {
             App.notify(msg);
             _p.refreshStoreAndTabs(_p, App.ID);
