@@ -90,6 +90,7 @@ App.view.define('VMain', {
                         itemId: 'chartTab',
                         listeners: {
                             hide: function () {
+                                console.log("LISTENER");
                                 this.clearListeners();
                                 this.removeAll();
                             }
