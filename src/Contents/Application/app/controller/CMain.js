@@ -95,16 +95,8 @@ App.controller.define('CMain', {
         });
         mask.show();
 
-        // On récupère l'entité de la mesure concernée.
-        App.Mesures.getById(mesureId, function (mesure) {
-
-            // On récupère le signal contenant la mesure.
-            App.Signals.getSingle(mesure.acquisitionId, function (signal) {
-                var args = new Object();
-                args["points"] = mesure.points;
-                args["freqEchantillonage"] = signal.frequence_echantillonage;
-                App.ChartsUtils.getChartPointsFFT(args, function (fftPoints) {
-
+        App.ChartsUtils.getChartPointsFFT2(mesureId, function(fftPoints){
+           
                     // Paramétrage de l'esthétique du graphe
                     var layout = {
                         title: 'Capteur de la voie ' + mesure.voie,
@@ -122,11 +114,9 @@ App.controller.define('CMain', {
                     // Remplissage dans la div dont l'id est la concaténation
                     // de chart et de l'id de la mesure.
                     Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
-                    mask.hide();
-                });
-
-            });
+                    mask.hide(); 
         });
+
 
     },
 
