@@ -170,6 +170,7 @@ App.controller.define('CMain', {
             // de 'chart' et de l'id de la mesure.
             Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
             mask.hide();
+            Plotly.downloadImage(Ext.get('chart' + mesureId).dom, {format: 'png', width:800, height:600, filename: "test.png"});
         });
     },
 
