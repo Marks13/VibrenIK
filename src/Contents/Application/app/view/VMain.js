@@ -90,7 +90,8 @@ App.view.define('VMain', {
                         itemId: 'chartTab',
                         listeners: {
                             hide: function () {
-                                this.removeAll();
+                                tabBar = this.getTabBar();
+                                tabBar.removeAll();
                             }
                         },
                         defaults: {
