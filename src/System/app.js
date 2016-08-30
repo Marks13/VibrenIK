@@ -14,7 +14,7 @@ App = {
                     if (record == null) {
                         res.send('Unknown ID');
                     } else {
-                        PdfService.render(record, res, function(){
+                        PdfService.renderPdf(record, res, function(){
                            console.log("end"); 
                         });
                     }
