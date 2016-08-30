@@ -9,7 +9,7 @@ App = {
             if (isNaN(parseInt(req.param('id')))) {
                 res.respond(new Error('ID must be a valid integer'), 400);
             } else {
-                res.send('Got a POST request');
+                res.send(id);
             }
         });
     }
