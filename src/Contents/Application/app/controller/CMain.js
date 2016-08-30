@@ -113,7 +113,7 @@ App.controller.define('CMain', {
         }
 
         for (var index = 0; index < ids.length; index++) {
-            tab = new Ext.Tab({
+            tab = new Ext.Panel({
                 id: ids[index],
                 title: 'Voie ' + index,
                 html: '<div id=chart' + ids[index] + '></div>'
