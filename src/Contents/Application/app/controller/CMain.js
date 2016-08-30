@@ -104,12 +104,19 @@ App.controller.define('CMain', {
 
         panel.setActiveTab(0);
 
-        var ids = [];
-        for (recordsIndex = 0; recordsIndex < records.length; recordsIndex++) {
-            ids.push(records[recordsIndex].id);
-        }
+        addTabToPanel(panel, 0, records, function (msg) {
+            panel.show();
+        });
+    },
 
-        for (var index = 0; index < ids.length; index++) {
+    addTabToPanel: function (panel, index, records, cb) {
+        var context = this;
+
+        // Prédicat indiquant la fin de la récursivité.
+
+        if (index < records.length) {
+            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
+            // sélectionné.
             tab = new Ext.Panel({
                 id: ids[index],
                 title: 'Voie ' + index,
@@ -125,20 +132,6 @@ App.controller.define('CMain', {
             );
 
             panel.add(tab);
-        }
-        panel.show();
-
-    },
-
-    addTabToPanel: function (panel, index, records, cb) {
-        var context = this;
-
-        // Prédicat indiquant la fin de la récursivité.
-
-        if (index < records.length) {
-            // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
-            // sélectionné.
-
             context.addTabToPanel(panel, index + 1, records, function (msg) {
                 cb(msg);
             });
