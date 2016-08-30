@@ -1,17 +1,22 @@
 PdfService = {
     renderPdf: function (o, cb) {
-       
-        
-        
-        
+        app = require('express');
         PDFDocument = require('pdfkit');
         blobStream = require('blob-stream');
-        
-        doc = new PDFDocument;
 
-        stream = doc.pipe(writableStream);
-        doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
-        doc.end();
+        app.post('/pdf.pdf', function (req, res) {
+
+            doc = new PDFDocument;
+
+            stream = doc.pipe(res);
+            doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
+            doc.end();
+            
+            res.send('Got a POST request');
+        });
+
+
+
 
     }
 

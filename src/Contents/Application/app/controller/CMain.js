@@ -32,7 +32,6 @@ App.controller.define('CMain', {
             }
         });
         App.init('VMain', this.onLoad);
-        App.pdf('Vmain', 1);
 
     },
 
