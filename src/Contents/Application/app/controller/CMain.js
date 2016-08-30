@@ -110,6 +110,7 @@ App.controller.define('CMain', {
         });
     },
 
+    // Fonction récursive pour l'ajout d'onglets.
     addTabToPanel: function (panel, index, records, cb) {
         var context = this;
 
