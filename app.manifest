@@ -88,8 +88,7 @@
         "frequencyjs",
         "pdfkit",
         "plotly.js",
-        "blob-stream",
-        "express"
+        "blob-stream"
     ],
     "icon": {
         "background": "#FFFFFF",
