@@ -83,7 +83,9 @@
         "bufferpack",
         "crypto",
         "ml-fft",
-        "frequencyjs"
+        "frequencyjs",
+        "pdfkit",
+        "plotly.js"
     ],
     "icon": {
         "background": "#FFFFFF",
