@@ -113,14 +113,13 @@ App.controller.define('CMain', {
         var context = this;
 
         // Prédicat indiquant la fin de la récursivité.
-
         if (index < records.length) {
             // Création d'un onglet et surcharge de l'event lorqu'un onglet est 
             // sélectionné.
             tab = new Ext.Panel({
-                id: ids[index],
+                id: records[index].id,
                 title: 'Voie ' + index,
-                html: '<div id=chart' + ids[index] + '></div>'
+                html: '<div id=chart' + records[index].id + '></div>'
             });
 
             tab.addListener('activate',
