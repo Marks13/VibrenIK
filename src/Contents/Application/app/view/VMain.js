@@ -91,7 +91,7 @@ App.view.define('VMain', {
                         listeners: {
                             hide: function () {
                                 tabBar = this.getTabBar();
-                                tabBar.removeAll();
+                                tabBar.clearListeners();
                             }
                         },
                         defaults: {
