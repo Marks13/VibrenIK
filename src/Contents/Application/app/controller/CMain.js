@@ -84,13 +84,10 @@ App.controller.define('CMain', {
 
     doTabs: function (me, td, cellIndex, selected, tr, rowIndex, e, eOpts) {
         var panel = App.get('mainform tabpanel#chartTab');
-
         var _p = this;
 
-        console.log("hide1");
         panel.hide();
 
-        console.log("hide2");
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
