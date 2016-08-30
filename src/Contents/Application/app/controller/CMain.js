@@ -106,6 +106,7 @@ App.controller.define('CMain', {
         }));
 
         panel.setActiveTab(0);
+        panel.doLayout();
 
         this.addTabToPanel(panel, 0, records, function (msg) {
             panel.show();
