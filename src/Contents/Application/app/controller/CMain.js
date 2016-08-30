@@ -91,12 +91,12 @@ App.controller.define('CMain', {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-            _p.tabCallback(_p, records, panel);
+            _p.tabCallback(records, panel);
         });
     },
 
     // Méthode appelée au retour de la récupération des mesures pour la génération d'onglets.
-    tabCallback: function (me, records, panel) {
+    tabCallback: function (records, panel) {
         panel.add(new Ext.Panel({
             id: 'DC',
             title: 'DC',
@@ -105,7 +105,7 @@ App.controller.define('CMain', {
 
         panel.setActiveTab(0);
 
-        me.addTabToPanel(panel, 0, records, function (msg) {
+        this.addTabToPanel(panel, 0, records, function (msg) {
             panel.show();
         });
     },
