@@ -54,9 +54,9 @@ App.controller.define('CMain', {
                 return false;
             });
             acquisitionStore.reload();
-
-
             App.get('mainform panel#mainScreen').show();
+            
+            
         });
     },
 
@@ -97,6 +97,8 @@ App.controller.define('CMain', {
 
     // Méthode appelée au retour de la récupération des mesures pour la génération d'onglets.
     tabCallback: function (records, panel) {
+        console.log(panel);
+        
         panel.add(new Ext.Panel({
             id: 'DC',
             title: 'DC',
