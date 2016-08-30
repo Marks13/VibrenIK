@@ -6,7 +6,8 @@ App = {
 
 
         app.get('/export/:id', function (req, res) {
-            if (isNaN(parseInt(req.param('id')))) {
+            id = req.param('id');
+            if (isNaN(parseInt(id))) {
                 res.respond(new Error('ID must be a valid integer'), 400);
             } else {
                 res.send(id);
