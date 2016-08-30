@@ -89,10 +89,13 @@ App.view.define('VMain', {
                         xtype: 'tabpanel',
                         itemId: 'chartTab',
                         listeners: {
+                            // Lorsque l'on masque le panneau, on supprime tous ses onglets.
+                            // On le désactive pour éviter de subir les listeners associés aux onglets.
                             hide: function () {
                                 this.disable();
                                 this.removeAll();
                             },
+                            // Une fois le traitement fini, on réactive le tout.
                             show: function () {
                                 this.enable();
                             }
