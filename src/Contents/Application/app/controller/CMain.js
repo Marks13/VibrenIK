@@ -91,7 +91,7 @@ App.controller.define('CMain', {
         // Récupération des messures correspondantes à l'acquisition courante et génération des onglets.
 
         App.Mesures.getByAcquisitionId(selected.data.id, function (records) {
-            _p.tabCallback(me, records, panel);
+            _p.tabCallback(_p, records, panel);
         });
     },
 
