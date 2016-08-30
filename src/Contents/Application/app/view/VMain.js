@@ -93,7 +93,7 @@ App.view.define('VMain', {
                                 this.disable();
                                 this.removeAll();
                             },
-                            show: function() {
+                            show: function () {
                                 this.enable();
                             }
                         },
