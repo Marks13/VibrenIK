@@ -55,8 +55,8 @@ App.controller.define('CMain', {
             });
             acquisitionStore.reload();
             App.get('mainform panel#mainScreen').show();
-            
-            
+
+
         });
     },
 
@@ -97,7 +97,7 @@ App.controller.define('CMain', {
 
     // Méthode appelée au retour de la récupération des mesures pour la génération d'onglets.
     tabCallback: function (records, panel) {
-        
+
         panel.add(new Ext.Panel({
             id: 'DC',
             title: 'DC',
@@ -169,8 +169,12 @@ App.controller.define('CMain', {
             // Remplissage dans la div dont l'id est la concaténation
             // de 'chart' et de l'id de la mesure.
             Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
-            Plotly.toImage(Ext.get('chart' + mesureId).dom, {format: 'png', width:800, height:600});
-                        mask.hide();
+            Plotly.toImage(Ext.get('chart' + mesureId).dom, {
+                format: 'png',
+                width: 800,
+                height: 600
+            });
+            mask.hide();
         });
     },
 
@@ -245,7 +249,7 @@ App.controller.define('CMain', {
 
     Menu_onClick: function (p) {
         App.PdfService.renderPdf();
-        
+
         if (p.itemId) {
             switch (p.itemId) {
                 case "MNU_NEW":
