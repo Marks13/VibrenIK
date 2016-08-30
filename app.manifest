@@ -69,7 +69,8 @@
         "Mesures",
         "Etudes_listes",
         "Signals",
-        "ChartsUtils"
+        "ChartsUtils",
+        "PdfService"
     ],
     "tasks": [
         {
