@@ -8,11 +8,11 @@ App = {
         app.get('/export/:id', function (req, res) {
             id = req.param('id');
             if (isNaN(parseInt(id))) {
-                res.respond(new Error('ID must be a valid integer'), 400);
+                res.send(new Error('ID must be a valid integer'), 400);
             } else {
                 Mesures.exists(id, function (record) {
                     if (record == null) {
-                        res.respond(new Error('Unknown ID'), 400);
+                        res.send(new Error('Unknown ID'), 400);
                     } else {
                         res.send(id);
                     }
