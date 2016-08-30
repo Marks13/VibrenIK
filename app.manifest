@@ -70,7 +70,8 @@
         "Etudes_listes",
         "Signals",
         "ChartsUtils",
-        "PdfService"
+        "PdfService",
+        "express"
     ],
     "tasks": [
         {
@@ -87,7 +88,6 @@
         "frequencyjs",
         "pdfkit",
         "plotly.js",
-        "browserify",
         "blob-stream"
     ],
     "icon": {
