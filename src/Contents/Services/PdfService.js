@@ -1,5 +1,7 @@
 PdfService = {
     renderPdf: function (o, cb) {
+        
+        console.log("ici");
         PDFDocument = require('pdfkit');
         blobStream = require('blob-stream');
 
