@@ -1,15 +1,18 @@
 PdfService = {
-    getByEtude: function (o, cb) {
-        var vibren = Etudes_listes.using('db').using('vibren');
+    renderPdf: function (o, cb) {
+        PDFDocument = require('pdfkit');
+        blobStream = require('blob-stream');
 
-        vibren.etudes_listes.findAll({
-            where: {
-                etudeId: o
-            }
-        }).then(function (records) {
-            cb(records);
+        doc = new PDFDocument;
+
+        stream = doc.pipe(blobStream());
+        doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
+        doc.end();
+        stream.on('finish', function () {
+            iframe.src = stream.toBlobURL('application/pdf');
         });
     }
+
 };
 
 module.exports = PdfService;
