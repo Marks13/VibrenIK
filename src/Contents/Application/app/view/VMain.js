@@ -90,9 +90,7 @@ App.view.define('VMain', {
                         itemId: 'chartTab',
                         listeners: {
                             hide: function () {
-                                this.setActiveTab(this.getTabBar().items.items.length);
-                                this.doLayout();
-                                this.removeAll();
+                                this.close();
                             }
                         },
                         defaults: {
