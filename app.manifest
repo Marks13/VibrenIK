@@ -86,7 +86,8 @@
         "ml-fft",
         "frequencyjs",
         "pdfkit",
-        "plotly.js"
+        "plotly.js",
+        "browserify"
     ],
     "icon": {
         "background": "#FFFFFF",
