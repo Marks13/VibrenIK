@@ -1,14 +1,17 @@
 Mesures = {
+    
+    vibren: function(){
+        return Mesures.using('db').using('vibren');
+    },
+    
     getAll: function (o, cb) {
-        Mesures.using('db').using('vibren').findAll().then(function (records) {
+        Mesures.vibren().findAll().then(function (records) {
             cb(records);
         });
     },
 
     getByAcquisitionId: function (o, cb) {
-        var vibren = Mesures.using('db').using('vibren');
-
-        vibren.mesures.findAll({
+        Mesures.vibren().mesures.findAll({
             where: {
                 acquisitionId: o
             }
@@ -18,14 +21,18 @@ Mesures = {
     },
     
     getById: function (o, cb) {
-        var vibren = Mesures.using('db').using('vibren');
-
-        vibren.mesures.find({
+        Mesures.vibren().mesures.find({
             where: {
                 id: o
             }
         }).then(function (records) {
             cb(records);
+        });
+    },
+    
+    exists: function (id, cb) {
+        Mesures.vibren().findOne({ where: {id: id}}).then(function (record) {
+           cb(record); 
         });
     }
 }
