@@ -14,7 +14,9 @@ App = {
                     if (record == null) {
                         res.send('Unknown ID');
                     } else {
-                        res.send(id);
+                        PdfService.render(record, res, function(){
+                           console.log("end"); 
+                        });
                     }
                 });
             }
