@@ -1,18 +1,17 @@
 PdfService = {
     renderPdf: function (o, cb) {
-        
-        console.log("ici");
+        fs = require('fs');
         PDFDocument = require('pdfkit');
         blobStream = require('blob-stream');
 
+        var writableStream = fs.createWriteStream('test.pdf')
+        
         doc = new PDFDocument;
 
-        stream = doc.pipe(blobStream());
+        stream = doc.pipe(writableStream);
         doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
         doc.end();
-        stream.on('finish', function () {
-            iframe.src = stream.toBlobURL('application/pdf');
-        });
+
     }
 
 };
