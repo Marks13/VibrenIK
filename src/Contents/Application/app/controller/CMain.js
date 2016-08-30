@@ -116,14 +116,11 @@ App.controller.define('CMain', {
             tab = new Ext.Tab({
                 id: ids[index],
                 title: 'Voie ' + index,
-               
                 html: '<div id=chart' + ids[index] + '></div>'
             });
 
             tab.addListener('activate',
-
                 function (tab, e0pts) {
-                    console.log("listener");
                     _p.plot(tab.id, index);
                 }, {
                     single: true
