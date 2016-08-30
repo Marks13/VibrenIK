@@ -1,7 +1,7 @@
 Mesures = {
     
     vibren: function(){
-        return Mesures.using('db').using('vibren');
+        return Mesures.using('db').using('vibren').mesures;
     },
     
     getAll: function (o, cb) {
@@ -11,7 +11,7 @@ Mesures = {
     },
 
     getByAcquisitionId: function (o, cb) {
-        Mesures.vibren().mesures.findAll({
+        Mesures.vibren().findAll({
             where: {
                 acquisitionId: o
             }
@@ -21,7 +21,7 @@ Mesures = {
     },
     
     getById: function (o, cb) {
-        Mesures.vibren().mesures.find({
+        Mesures.vibren().find({
             where: {
                 id: o
             }
