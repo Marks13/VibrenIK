@@ -10,13 +10,13 @@ App = {
             if (isNaN(parseInt(id))) {
                 res.respond(new Error('ID must be a valid integer'), 400);
             } else {
-                Mesures.exists(id, cb) {
+                Mesures.exists(id, function (record) {
                     if (cb == null) {
                         res.respond(new Error('Unknown ID'), 400);
                     } else {
                         res.send(id);
                     }
-                }
+                });
             }
         });
     }
