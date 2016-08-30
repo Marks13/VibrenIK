@@ -1,10 +1,11 @@
 PdfService = {
     renderPdf: function (o, cb) {
-        fs = require('fs');
+       
+        
+        
+        
         PDFDocument = require('pdfkit');
         blobStream = require('blob-stream');
-
-        var writableStream = fs.createWriteStream('test.pdf')
         
         doc = new PDFDocument;
 

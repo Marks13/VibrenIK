@@ -5,7 +5,7 @@ App = {
         });
     },
 
-    pdf: function (id) {
+    pdf: function (app, id) {
         app.post('/pdf.pdf', function (req, res) {
             res.send('Got a POST request');
         });
