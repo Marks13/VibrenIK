@@ -1,7 +1,8 @@
 PdfService = {
     renderPdf: function (mesure, res, cb) {
-        PDFDocument = require('pdfkit');
+
         blobStream = require('blob-stream');
+        PDFDocument = require('pdfkit');
 
         doc = new PDFDocument;
 
