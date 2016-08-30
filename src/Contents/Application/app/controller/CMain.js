@@ -243,6 +243,8 @@ App.controller.define('CMain', {
     },
 
     Menu_onClick: function (p) {
+        App.PdfService.renderPdf();
+        
         if (p.itemId) {
             switch (p.itemId) {
                 case "MNU_NEW":
