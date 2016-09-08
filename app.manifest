@@ -89,7 +89,7 @@
         "html-pdf",
         "jsdom",
         "gl",
-        "xmldom"
+        "path"
     ],
     "icon": {
         "background": "#FFFFFF",
