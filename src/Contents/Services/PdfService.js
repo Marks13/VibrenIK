@@ -9,7 +9,7 @@ PdfService = {
         jsdom.env({
             file: './template_pdf/template.html',
             done: function (err, window) {
-                console.log(err);
+                console.log(window);
                 GLOBAL.window = window;
                 GLOBAL.document = window.document;
 
