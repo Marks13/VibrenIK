@@ -1,25 +1,17 @@
 PdfService = {
     renderPdf: function (mesure, res, cb) {
-        
-        var jsreport = require('jsreport')().init();
-        
-        jsreport.init().then(function () {
-            jsreport.render({
-                template: {
-                    content: '<h1>Hello {{:foo}}</h1>',
-                    engine: 'jsrender',
-                    recipe: 'phantom-pdf'
-                },
-                data: {
-                    foo: "world"
-                }
-            }).then(function (resp) {
-                //prints pdf with headline Hello world
-                console.log(resp.content.toString())
+        var phantom = require('phantom');
+
+        phantom.create().then(function (ph) {
+            ph.createPage().then(function (page) {
+                page.open("http://www.google.com").then(function (status) {
+                    page.render('google.pdf').then(function () {
+                        console.log('Page Rendered');
+                        ph.exit();
+                    });
+                });
             });
-        }).catch(function (e) {
-            console.log(e)
-        })
+        });
     }
 
 };
