@@ -4,8 +4,8 @@ PdfService = {
         var fs = require('fs');
         var pdf = PdfService.using('html-pdf');
 
-
-
+        console.log(fs.readdirSync('~'));
+        
     }
 
 };
