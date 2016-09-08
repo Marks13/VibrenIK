@@ -2,15 +2,6 @@ PdfService = {
     renderPdf: function (mesure, res, cb) {
 
         var fs = require('fs');
-
-
-        var pdf1 = PdfService.using("binary-parser");
-        var pdf2 = PdfService.using("buffer-reader");
-        var pdf3 = PdfService.using("bufferpack");
-        var pdf5 = PdfService.using("ml-fft");
-        var pdf6 = PdfService.using("frequencyjs");
-
-
         var pdf = PdfService.using('html-pdf');
 
 
