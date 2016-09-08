@@ -1,21 +1,8 @@
 PdfService = {
     renderPdf: function (mesure, res, cb) {
-        try {
-            PDFDocument = PdfService.using('pdfkit');
-        } catch (e) {
-            console.log(e);
-        }
-        
-        doc = new PDFDocument;
+        var client = require("jsreport-client");
 
-        
-        doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
-        doc.end();
-
-        stream.on('finish', function () {
-
-        });
-    }
+        cb(client);
 
 };
 
