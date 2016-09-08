@@ -13,7 +13,6 @@ PdfService = {
                 GLOBAL.document = window.document;
 
                 try {
-                    var essai = PdfService.using('3d-view');
                     var plotly = PdfService.using('plotly.js');
 
                 } catch (e) {
