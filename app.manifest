@@ -85,9 +85,8 @@
         "crypto",
         "ml-fft",
         "frequencyjs",
-        "pdfkit",
         "plotly.js",
-        "blob-stream",
+        "phantom-pdf",
         "express"
     ],
     "icon": {
