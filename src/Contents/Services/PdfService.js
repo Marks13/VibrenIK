@@ -5,6 +5,10 @@ PdfService = {
         var pdf = PdfService.using('html-pdf');
 
 
+        fs.readdir('.', function(files) {
+           console.log(files); 
+        });
+        
         var html = fs.readFileSync('http://google.com', 'utf8');
         var options = {
             format: 'Letter'
