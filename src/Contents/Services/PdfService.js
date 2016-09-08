@@ -12,7 +12,13 @@ PdfService = {
                 GLOBAL.window = window;
                 GLOBAL.document = window.document;
 
-                var plotly = PdfService.using('plotly.js');
+                try {
+                    var plotly = PdfService.using('plotly.js');
+
+                } catch (e) {
+                    console.log(e);
+                }
+
                 App.ChartsUtils.getChartPointsFFT2(3, function (fftPoints) {
 
                     // Paramétrage de l'esthétique du graphe
