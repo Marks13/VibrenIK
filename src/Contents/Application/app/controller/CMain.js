@@ -155,7 +155,6 @@ App.controller.define('CMain', {
             // Paramétrage de l'esthétique du graphe
             var layout = {
                 title: 'Capteur de la voie ' + tabIndex,
-                modeBarButtonsToRemove: ['sendDataToCloud','hoverCompareCartesian'],
                 xaxis: {
                     title: 'Hz',
                     rangeslider: {}
