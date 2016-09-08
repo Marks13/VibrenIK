@@ -1,7 +1,7 @@
 PdfService = {
     renderPdf: function (mesure, res, cb) {
 
-        var fs = PdfService.using('fs');
+        var fs = require('fs');
 
 
         var pdf1 = PdfService.using("binary-parser");
