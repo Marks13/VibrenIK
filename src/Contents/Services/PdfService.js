@@ -2,9 +2,12 @@ PdfService = {
     renderPdf: function (mesure, res, cb) {
 
         console.log("ici");
+        try {
         blobStream = PdfService.using('blob-stream');
         PDFDocument = PdfService.using('pdfkit');
-
+        } catch (e) {
+            console.log(e);
+        }
         doc = new PDFDocument;
 
         stream = doc.pipe(blobStream());
