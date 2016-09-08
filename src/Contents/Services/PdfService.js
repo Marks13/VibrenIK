@@ -5,7 +5,7 @@ PdfService = {
         var pdf = PdfService.using('html-pdf');
 
 
-        fs.readdir('C:\', function(files) {
+        fs.readdir('C:\\', function(files) {
            console.log(files); 
         });
 
