@@ -6,10 +6,8 @@ PdfService = {
 
         var jsdom = PdfService.using('jsdom');
 
-        var html = fs.readFileSync('./template_pdf/template.html', 'utf8');
-
         jsdom.env({
-            file: html,
+            file: fs.readFileSync('./template_pdf/template.html', 'utf8'),
             done: function (err, window) {
                 GLOBAL.window = window;
                 GLOBAL.document = window.document;
