@@ -11,6 +11,9 @@ PdfService = {
         jsdom.env({
             file: html,
             done: function (err, window) {
+                GLOBAL.window = window;
+                GLOBAL.document = window.document;
+
                 var plotly = PdfService.using('plotly.js');
                 App.ChartsUtils.getChartPointsFFT2(3, function (fftPoints) {
 
