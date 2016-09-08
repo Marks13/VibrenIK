@@ -1,17 +1,18 @@
 PdfService = {
     renderPdf: function (mesure, res, cb) {
-        var phantom = require('phantom');
+        
+        var fs = require('fs');
+        var pdf = require('html-pdf');
+        var html = fs.readFileSync('./test/businesscard.html', 'utf8');
+        var options = {
+            format: 'Letter'
+        };
 
-        phantom.create().then(function (ph) {
-            ph.createPage().then(function (page) {
-                page.open("http://www.google.com").then(function (status) {
-                    page.render('google.pdf').then(function () {
-                        console.log('Page Rendered');
-                        ph.exit();
-                    });
-                });
-            });
+        pdf.create(html, options).toFile('./businesscard.pdf', function (err, res) {
+            if (err) return console.log(err);
+            console.log(res); // { filename: '/app/businesscard.pdf' } 
         });
+        
     }
 
 };
