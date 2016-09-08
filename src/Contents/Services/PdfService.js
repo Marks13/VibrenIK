@@ -3,8 +3,8 @@ PdfService = {
 
         console.log("ici");
         try {
-        blobStream = PdfService.using('blob-stream');
-        PDFDocument = PdfService.using('pdfkit');
+            blobStream = PdfService.using('blob-stream');
+            PDFDocument = PdfService.using('pdfkit');
         } catch (e) {
             console.log(e);
         }
@@ -13,9 +13,9 @@ PdfService = {
         stream = doc.pipe(blobStream());
         doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
         doc.end();
-        
+
         console.log("ici");
-        
+
         stream.on('finish', function () {
             blob = stream.toBlob('application/pdf');
             res.send(blob);
