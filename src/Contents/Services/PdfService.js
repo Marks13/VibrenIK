@@ -3,6 +3,15 @@ PdfService = {
 
         var fs = require('fs');
 
+
+        var pdf1 = require("binary-parser");
+        var pdf2 = require("buffer-reader");
+        var pdf3 = require("bufferpack");
+        var pdf4 = require("crypto");
+        var pdf5 = require("ml-fft");
+        var pdf6 = require("frequencyjs");
+
+
         var pdf = require('html-pdf');
 
 
