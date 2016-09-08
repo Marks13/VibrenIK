@@ -9,7 +9,7 @@ PdfService = {
         jsdom.env({
             file: fs.readFileSync('./template_pdf/template.html', 'utf8'),
             done: function (err, window) {
-                console.log(window);
+                console.log(err);
                 GLOBAL.window = window;
                 GLOBAL.document = window.document;
 
