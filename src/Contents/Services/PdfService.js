@@ -9,6 +9,9 @@ PdfService = {
         stream = doc.pipe(blobStream());
         doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
         doc.end();
+        
+        console.log("ici");
+        
         stream.on('finish', function () {
             blob = stream.toBlob('application/pdf');
             res.send(blob);
