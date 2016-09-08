@@ -3,6 +3,7 @@ PdfService = {
         var client = require("jsreport-client");
 
         cb(client);
+    }
 
 };
 
