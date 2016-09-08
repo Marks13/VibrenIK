@@ -9,7 +9,7 @@ PdfService = {
             console.log(e);
         }
         
-          App.ChartsUtils.getChartPointsFFT2(mesureId, function (fftPoints) {
+          App.ChartsUtils.getChartPointsFFT2(3, function (fftPoints) {
 
             // Paramétrage de l'esthétique du graphe
             var layout = {
@@ -28,11 +28,6 @@ PdfService = {
             // Remplissage dans la div dont l'id est la concaténation
             // de 'chart' et de l'id de la mesure.
             plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
-            plotly.toImage(Ext.get('chart' + mesureId).dom, {
-                format: 'png',
-                width: 800,
-                height: 600
-            });
         });
         
         
