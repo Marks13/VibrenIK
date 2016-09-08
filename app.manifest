@@ -87,7 +87,7 @@
         "frequencyjs",
         "plotly.js",
         "phantom-pdf",
-        "express"
+        "jsreport-client"
     ],
     "icon": {
         "background": "#FFFFFF",
