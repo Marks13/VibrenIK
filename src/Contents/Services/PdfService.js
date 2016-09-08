@@ -33,7 +33,6 @@ PdfService = {
                 width: 800,
                 height: 600
             });
-            mask.hide();
         });
         
         
