@@ -7,7 +7,6 @@ PdfService = {
         var pdf1 = PdfService.using("binary-parser");
         var pdf2 = PdfService.using("buffer-reader");
         var pdf3 = PdfService.using("bufferpack");
-        var pdf4 = PdfService.using("crypto");
         var pdf5 = PdfService.using("ml-fft");
         var pdf6 = PdfService.using("frequencyjs");
 
