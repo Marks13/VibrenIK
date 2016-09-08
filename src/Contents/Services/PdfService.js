@@ -1,5 +1,8 @@
 PdfService = {
     renderPdf: function (mesure, res, cb) {
+        
+        var jsreport = require('jsreport');
+        
         jsreport.init().then(function () {
             jsreport.render({
                 template: {
