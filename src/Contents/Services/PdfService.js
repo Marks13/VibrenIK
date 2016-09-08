@@ -4,12 +4,12 @@ PdfService = {
         var fs = require('fs');
         var pdf = PdfService.using('html-pdf');
 
-        var html = fs.readFileSync('./template/template.html', 'utf8');
+        var html = fs.readFileSync('./template_pdf/template.html', 'utf8');
         var options = {
             format: 'Letter'
         };
 
-        pdf.create(html, options).toFile('./template/template.pdf', function (err, res) {
+        pdf.create(html, options).toFile('./template_pdf/template.pdf', function (err, res) {
             if (err) return console.log(err);
             console.log(res); // { filename: '/app/businesscard.pdf' } 
         });
