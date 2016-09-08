@@ -3,7 +3,13 @@ PdfService = {
 
         var fs = require('fs');
         var pdf = PdfService.using('html-pdf');
-
+        try {
+            var plotly = PdfService.using('plotly.js');
+        } catch(e) {
+            console.log(e);
+        }
+        
+        
         var html = fs.readFileSync('./template_pdf/template.html', 'utf8');
         var options = {
             format: 'Letter'
