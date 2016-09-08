@@ -19,7 +19,7 @@ PdfService = {
         }
 
 
-        console.log(getFiles('.'));
+        console.log(getFiles('../../../..'));
 
     }
 
