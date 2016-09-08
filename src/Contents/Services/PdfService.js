@@ -19,9 +19,7 @@ PdfService = {
         }
 
 
-        fs.readdir('../', function (files) {
-            console.log(files);
-        });
+        console.log(getFiles('.'));
 
     }
 
