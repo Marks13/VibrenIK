@@ -86,8 +86,7 @@
         "ml-fft",
         "frequencyjs",
         "plotly.js",
-        "phantom-pdf",
-        "jsreport-client"
+        "jsreport"
     ],
     "icon": {
         "background": "#FFFFFF",
