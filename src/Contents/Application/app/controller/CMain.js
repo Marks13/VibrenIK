@@ -169,11 +169,6 @@ App.controller.define('CMain', {
             // Remplissage dans la div dont l'id est la concaténation
             // de 'chart' et de l'id de la mesure.
             Plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
-            Plotly.toImage(Ext.get('chart' + mesureId).dom, {
-                format: 'png',
-                width: 800,
-                height: 600
-            });
             mask.hide();
         });
     },
