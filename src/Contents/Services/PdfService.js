@@ -11,19 +11,13 @@ PdfService = {
             done: function (err, window) {
                 GLOBAL.window = window;
                 GLOBAL.document = window.document;
-
-                try {
-                    var plotly = PdfService.using('plotly.js');
-
-                } catch (e) {
-                    console.log(e);
-                }
+                var plotly = PdfService.using('plotly.js');
 
                 App.ChartsUtils.getChartPointsFFT2(3, function (fftPoints) {
 
                     // Paramétrage de l'esthétique du graphe
                     var layout = {
-                        title: 'Capteur de la voie ' + tabIndex,
+                        title: 'Capteur de la voie ' + 1,
                         xaxis: {
                             title: 'Hz',
                             rangeslider: {}
@@ -37,7 +31,7 @@ PdfService = {
 
                     // Remplissage dans la div dont l'id est la concaténation
                     // de 'chart' et de l'id de la mesure.
-                    plotly.plot(Ext.get('chart' + mesureId).dom, [fftPoints.points], layout);
+                    plotly.plot(document.getElementById('chart');, [fftPoints.points], layout);
                 });
             }
         });
