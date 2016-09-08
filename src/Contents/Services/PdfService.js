@@ -3,14 +3,6 @@ PdfService = {
 
         var fs = require('fs');
 
-        var b = require("buffer-reader");
-        var c = require("bufferpack");
-        var d = require("frequencyjs");
-        var e = require("plotly.js");
-        var f = require("binary-parser");
-
-
-
         var pdf = require('html-pdf');
 
 
