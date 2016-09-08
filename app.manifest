@@ -88,7 +88,8 @@
         "plotly.js",
         "html-pdf",
         "jsdom",
-        "gl"
+        "gl",
+        "xmldom"
     ],
     "icon": {
         "background": "#FFFFFF",

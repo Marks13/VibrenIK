@@ -11,7 +11,9 @@ PdfService = {
             done: function (err, window) {
                 GLOBAL.window = window;
                 GLOBAL.document = window.document;
+
                 var plotly = PdfService.using('plotly.js');
+                var DOMParser = require('xmldom').DOMParser;
 
                 App.ChartsUtils.getChartPointsFFT2(3, function (fftPoints) {
 
