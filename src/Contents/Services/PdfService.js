@@ -9,7 +9,6 @@ PdfService = {
         jsdom.env({
             file: './template_pdf/template.html',
             done: function (err, window) {
-                console.log(window);
                 GLOBAL.window = window;
                 GLOBAL.document = window.document;
 
@@ -36,15 +35,6 @@ PdfService = {
                 });
             }
         });
-
-        //        var options = {
-        //            format: 'Letter'
-        //        };
-        //
-        //        pdf.create(html, options).toFile('./template_pdf/template.pdf', function (err, res) {
-        //            if (err) return console.log(err);
-        //            console.log(res); // { filename: '/app/businesscard.pdf' } 
-        //        });
     }
 
 };
