@@ -87,7 +87,6 @@
         "frequencyjs",
         "pdfkit",
         "plotly.js",
-        "blob-stream",
         "express"
     ],
     "icon": {
