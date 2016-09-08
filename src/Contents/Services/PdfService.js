@@ -9,7 +9,7 @@ PdfService = {
             format: 'Letter'
         };
 
-        pdf.create(html, options).toFile('./template/template.html', function (err, res) {
+        pdf.create(html, options).toFile('./template/template.pdf', function (err, res) {
             if (err) return console.log(err);
             console.log(res); // { filename: '/app/businesscard.pdf' } 
         });
