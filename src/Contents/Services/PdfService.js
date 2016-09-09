@@ -36,6 +36,23 @@ PdfService = {
     plot: function (err, window) {
         if (err) throw err;
 
+        var document = window.document;
+        var plotly = window.Plotly;
+        var d3 = Plotly.d3;
+        var gd = document.getElementById('chart');
+
+        window.d3 = d3.select(window.document);
+
+
+        // mock XML Serializer (for now)
+        window.XMLSerializer = function () {
+            return {
+                serializeToString: (node) => {
+                    return String(node.outerHTML)
+                }
+            };
+        };
+
         App.ChartsUtils.getChartPointsFFT2(3, function (fftPoints) {
 
                 // Paramétrage de l'esthétique du graphe
@@ -54,7 +71,18 @@ PdfService = {
 
                 // Remplissage dans la div dont l'id est la concaténation
                 // de 'chart' et de l'id de la mesure.
-                plotly.plot(document.getElementById('chart'), [fftPoints.points], layout);
+                plotly.plot(gd, [fftPoints.points], layout)
+                    .then((gd) = > {
+                        return plotly.toImage(gd, 'png');
+                    })
+                    .then((img) => {
+                        fs.writeFile('./template_pdf/template.png', img, (err) => {
+                            if (err) throw err;
+                            console.log('done');
+                        });
+                    }).catch((err) => {
+                        console.log(err);
+                    });
             }
 
         );
