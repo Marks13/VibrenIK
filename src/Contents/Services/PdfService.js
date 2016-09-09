@@ -57,7 +57,7 @@ PdfService = {
                 plotly.plot(document.getElementById('chart'), [fftPoints.points], layout);
             }
 
-        };
+        );
     }
 }
 module.exports = PdfService;
