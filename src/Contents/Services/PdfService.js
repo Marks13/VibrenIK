@@ -33,7 +33,9 @@ PdfService = {
     plot: function (err, window) {
         if (err) throw err;
 
-        var document = window.document;
+        GLOBAL.window = window;
+        GLOBAL.document = window.document;
+
         var plotly = PdfService.using('plotly.js');
         var d3 = plotly.d3;
         var gd = document.getElementById('chart');
