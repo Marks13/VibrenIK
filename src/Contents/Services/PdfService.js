@@ -4,7 +4,10 @@ PdfService = {
         var fs = require('fs');
         var pdf = PdfService.using('html-pdf');
 
-        var jsdom = PdfService.using('jsdom');
+        var jsdom = PdfService.using('path');
+
+        var PATH_TO_PLOTLYJS = PdfService.using.resolve('plotly.js/dist/plotly.js');
+        var plotlySrc = fs.readFileSync(PATH_TO_PLOTLYJS, 'utf-8');
 
         jsdom.env({
             file: './template_pdf/template.html',
