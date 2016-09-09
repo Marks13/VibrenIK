@@ -89,7 +89,8 @@
         "html-pdf",
         "jsdom",
         "gl",
-        "path"
+        "path",
+        "canvas"
     ],
     "icon": {
         "background": "#FFFFFF",
