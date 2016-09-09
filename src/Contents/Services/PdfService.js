@@ -6,11 +6,21 @@ PdfService = {
 
         var path = PdfService.using('path');
         var jsdom = PdfService.using('jsdom');
-        
-        
+
+
         var PATH_TO_PLOTLYJS = './bin/node_modules/plotly.js/dist/plotly.js';
         var plotlySrc = fs.readFileSync(PATH_TO_PLOTLYJS, 'utf-8');
-        
+
+
+        var virtualConsole = jsdom.createVirtualConsole();
+        virtualConsole.on('log', (message) => {
+            console.log('console.log called ->', message);
+        });
+        virtualConsole.on('jsdomError', (message) => {
+            console.error('Error ->', message);
+        });
+
+
         jsdom.env({
             file: './template_pdf/template.html',
             done: function (err, window) {
