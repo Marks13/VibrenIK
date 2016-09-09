@@ -8,8 +8,6 @@ PdfService = {
         var jsdom = PdfService.using('jsdom');
 
 
-        var PATH_TO_PLOTLYJS = './bin/node_modules/plotly.js/dist/plotly.js';
-        var plotlySrc = fs.readFileSync(PATH_TO_PLOTLYJS, 'utf-8');
 
 
         var virtualConsole = jsdom.createVirtualConsole();
@@ -23,7 +21,6 @@ PdfService = {
 
         jsdom.env({
             file: './template_pdf/template.html',
-            src: [plotlySrc],
             features: {
                 QuerySelector: true
             },
@@ -37,7 +34,7 @@ PdfService = {
         if (err) throw err;
 
         var document = window.document;
-        var plotly = window.Plotly;
+        var plotly = PDFService.using('plotly.js');
         var d3 = Plotly.d3;
         var gd = document.getElementById('chart');
 
