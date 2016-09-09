@@ -37,10 +37,8 @@ PdfService = {
         GLOBAL.document = window.document;
 
         var plotly = PdfService.using('plotly.js');
-        var d3 = plotly.d3;
-        var gd = document.getElementById('chart');
 
-        window.d3 = d3.select(window.document);
+        var gd = document.getElementById('chart');
 
 
         // mock XML Serializer (for now)
