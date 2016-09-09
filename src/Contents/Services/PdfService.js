@@ -9,6 +9,8 @@ PdfService = {
         var PATH_TO_PLOTLYJS = PdfService.using.resolve('plotly.js/dist/plotly.js');
         var plotlySrc = fs.readFileSync(PATH_TO_PLOTLYJS, 'utf-8');
 
+        console.log(PATH_TO_PLOTLYJS);
+        
         jsdom.env({
             file: './template_pdf/template.html',
             done: function (err, window) {
