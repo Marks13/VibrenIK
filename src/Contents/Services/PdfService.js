@@ -4,8 +4,10 @@ PdfService = {
         var fs = require('fs');
         var pdf = PdfService.using('html-pdf');
 
-        var jsdom = PdfService.using('path');
-
+        var path = PdfService.using('path');
+        var jsdom = PdfService.using('jsdom');
+        
+        
         var PATH_TO_PLOTLYJS = PdfService.resolve('plotly.js/dist/plotly.js');
         var plotlySrc = fs.readFileSync(PATH_TO_PLOTLYJS, 'utf-8');
 
