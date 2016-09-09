@@ -73,7 +73,7 @@ PdfService = {
                 // de 'chart' et de l'id de la mesure.
                 plotly.plot(gd, [fftPoints.points], layout)
                     .then(function (gd) {
-                        return plotly.toImage(gd, 'png');
+                        return plotly.toImage(gd, 'svg');
                     })
                     .then(function (img) {
                         fs.writeFile('./template_pdf/template.png', img, (err) => {
