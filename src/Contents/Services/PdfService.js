@@ -72,15 +72,15 @@ PdfService = {
                 // Remplissage dans la div dont l'id est la concaténation
                 // de 'chart' et de l'id de la mesure.
                 plotly.plot(gd, [fftPoints.points], layout)
-                    .then((gd) = > {
+                    .then(function (gd) {
                         return plotly.toImage(gd, 'png');
                     })
-                    .then((img) => {
+                    .then(function (img) {
                         fs.writeFile('./template_pdf/template.png', img, (err) => {
                             if (err) throw err;
                             console.log('done');
                         });
-                    }).catch((err) => {
+                    }).catch(function (err) {
                         console.log(err);
                     });
             }
