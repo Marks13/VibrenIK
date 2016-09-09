@@ -35,7 +35,7 @@ PdfService = {
 
         var document = window.document;
         var plotly = PdfService.using('plotly.js');
-        var d3 = Plotly.d3;
+        var d3 = plotly.d3;
         var gd = document.getElementById('chart');
 
         window.d3 = d3.select(window.document);
