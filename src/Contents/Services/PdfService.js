@@ -8,7 +8,7 @@ PdfService = {
         var jsdom = PdfService.using('jsdom');
         
         
-        var PATH_TO_PLOTLYJS = './bin/node_modules_plotly.js/dist/plotly.js';
+        var PATH_TO_PLOTLYJS = './bin/node_modules/plotly.js/dist/plotly.js';
         var plotlySrc = fs.readFileSync(PATH_TO_PLOTLYJS, 'utf-8');
         
         jsdom.env({
